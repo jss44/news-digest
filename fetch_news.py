@@ -152,12 +152,12 @@ Each element in the array must have exactly these four fields:
 Return between 4 and 6 items. Do not duplicate stories."""
 
     messages = [{"role": "user", "content": prompt}]
-    tools = [{"type": "web_search_20250305", "name": "web_search"}]
+    tools = [{"type": "web_search_20250305", "name": "web_search", "max_uses": 3}]
 
     for attempt in range(15):
         try:
             response = client.messages.create(
-                model="claude-sonnet-4-6",
+                model="claude-haiku-4-5-20251001",
                 max_tokens=2500,
                 tools=tools,
                 messages=messages,
