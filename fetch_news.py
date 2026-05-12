@@ -5,6 +5,7 @@ then builds a static HTML page published via GitHub Pages.
 """
 
 import anthropic
+import time
 import json
 import os
 import sys
@@ -161,6 +162,11 @@ Return between 4 and 6 items. Do not duplicate stories."""
                 tools=tools,
                 messages=messages,
             )
+        except anthropic.RateLimitError:
+            wait = 65
+            print(f"    ⏳ Rate limited (attempt {attempt + 1}) — waiting {wait}s...")
+            time.sleep(wait)
+            continue
         except anthropic.APIError as e:
             print(f"    ✗ API error (attempt {attempt + 1}): {e}")
             break
@@ -504,6 +510,8 @@ def main():
         articles = fetch_articles_for_topic(client, topic)
         print(f"    ✓ {len(articles)} articles retrieved")
         all_results.append({**topic, "articles": articles})
+        if topic is not TOPICS[-1]:
+            time.sleep(12)  # stay under 30k tokens/min rate limit
 
     print("\n🏗   Building HTML page...")
     html = build_html(all_results)
