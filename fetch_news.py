@@ -128,6 +128,10 @@ def fetch_articles_for_topic(client: anthropic.Anthropic, topic: dict) -> list[d
     Calls the Anthropic API with the web_search tool to find
     recent news articles for a given topic. Returns a list of
     article dicts with title, url, source, and summary.
+
+    web_search_20250305 is a server-side tool: Anthropic executes
+    the searches automatically between turns. We loop until we get
+    an end_turn with a text block containing JSON.
     """
 
     today = datetime.now().strftime("%A, %B %d, %Y")
@@ -149,7 +153,7 @@ Return between 4 and 6 items. Do not duplicate stories."""
     messages = [{"role": "user", "content": prompt}]
     tools = [{"type": "web_search_20250305", "name": "web_search"}]
 
-    for attempt in range(10):
+    for attempt in range(15):
         try:
             response = client.messages.create(
                 model="claude-sonnet-4-20250514",
@@ -158,41 +162,60 @@ Return between 4 and 6 items. Do not duplicate stories."""
                 messages=messages,
             )
         except anthropic.APIError as e:
-            print(f"    API error (attempt {attempt + 1}): {e}")
+            print(f"    ✗ API error (attempt {attempt + 1}): {e}")
             break
 
-        # Always record the assistant turn before deciding what to do next
+        stop = response.stop_reason
+        block_types = [getattr(b, "type", "?") for b in response.content]
+        print(f"    turn {attempt + 1}: stop_reason={stop!r}  blocks={block_types}")
+
+        # Always record the assistant turn so the conversation stays valid
         messages.append({"role": "assistant", "content": response.content})
 
-        if response.stop_reason == "end_turn":
-            # Extract the JSON text and parse it
+        if stop == "end_turn":
+            # Look for a text block containing our JSON
             for block in response.content:
-                if hasattr(block, "text") and block.text.strip():
-                    return parse_articles(block.text, topic["label"])
-            print(f"    Warning: end_turn but no text found for '{topic['label']}'")
+                text = getattr(block, "text", "").strip()
+                if text:
+                    print(f"    text snippet: {text[:120]!r}")
+                    return parse_articles(text, topic["label"])
+            print(f"    ✗ end_turn but no text block found")
             break
 
-        elif response.stop_reason == "tool_use":
-            # Web search is a server-side tool — Anthropic executes it.
-            # We just need to acknowledge each tool call so the loop continues.
+        elif stop == "tool_use":
+            # The model wants to search — send back empty tool_results so it
+            # can continue.  Anthropic fills in the real search results
+            # server-side before the next turn begins.
             tool_results = []
             for block in response.content:
-                if block.type == "tool_use":
+                if getattr(block, "type", "") == "tool_use":
+                    query = getattr(block, "input", {})
+                    print(f"    web_search call: {query}")
                     tool_results.append({
                         "type": "tool_result",
                         "tool_use_id": block.id,
-                        "content": "",
+                        "content": "",   # server fills this in
                     })
             if tool_results:
                 messages.append({"role": "user", "content": tool_results})
             else:
-                break  # No tool calls found despite tool_use stop — bail out
+                print(f"    ✗ tool_use stop but no tool_use blocks found")
+                break
 
-        else:
-            print(f"    Unexpected stop reason '{response.stop_reason}' for '{topic['label']}'")
+        elif stop == "max_tokens":
+            # Ran out of tokens — try to salvage any text block present
+            print(f"    ⚠ max_tokens reached, attempting to parse partial response")
+            for block in response.content:
+                text = getattr(block, "text", "").strip()
+                if text:
+                    return parse_articles(text, topic["label"])
             break
 
-    print(f"    Warning: Could not retrieve articles for '{topic['label']}'")
+        else:
+            print(f"    ✗ Unexpected stop_reason={stop!r}")
+            break
+
+    print(f"    ✗ No articles retrieved for '{topic['label']}'")
     return []
 
 
