@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" id="page-top">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daily News Digest · 2026-05-12</title>
+  <style>
+    /* ── Reset & tokens ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:        #f0f2f5;
+      --surface:   #ffffff;
+      --border:    #e2e8f0;
+      --text:      #1a202c;
+      --muted:     #718096;
+      --link:      #2b6cb0;
+      --header-bg: #1a202c;
+      --nav-bg:    #2d3748;
+      --nav-text:  #e2e8f0;
+      --nav-hover: #4a5568;
+      --shadow:    0 1px 6px rgba(0,0,0,.08);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg:      #111827;
+        --surface: #1f2937;
+        --border:  #374151;
+        --text:    #f3f4f6;
+        --muted:   #9ca3af;
+        --link:    #60a5fa;
+        --nav-bg:  #111827;
+        --nav-hover: #1f2937;
+      }
+    }
+
+    /* ── Layout ── */
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+             background: var(--bg); color: var(--text); line-height: 1.65; }
+
+    header {
+      position: sticky; top: 0; z-index: 200;
+      background: var(--header-bg); color: #fff;
+      padding: 14px 28px;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 2px 10px rgba(0,0,0,.35);
+    }
+    header h1 { font-size: 1.2rem; font-weight: 700; letter-spacing: -.01em; }
+    header .meta { font-size: .8rem; opacity: .65; }
+
+    .layout { display: flex; min-height: calc(100vh - 58px); }
+
+    /* ── Sidebar ── */
+    nav {
+      width: 230px; min-width: 230px;
+      background: var(--nav-bg);
+      position: sticky; top: 58px;
+      height: calc(100vh - 58px);
+      overflow-y: auto;
+      padding: 18px 0;
+    }
+    nav .nav-label {
+      font-size: .68rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .1em; color: #718096;
+      padding: 0 18px 10px;
+    }
+    .nav-link {
+      display: block; color: var(--nav-text);
+      text-decoration: none; font-size: .87rem;
+      padding: 9px 18px;
+      border-left: 3px solid transparent;
+      transition: background .15s, border-color .15s;
+    }
+    .nav-link:hover {
+      background: var(--nav-hover);
+      border-left-color: var(--accent);
+    }
+
+    /* ── Main content ── */
+    main { flex: 1; padding: 28px 32px; max-width: 900px; }
+
+    .topic-section {
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 24px 28px 16px;
+      margin-bottom: 26px;
+      box-shadow: var(--shadow);
+    }
+    .section-heading {
+      font-size: 1.15rem; font-weight: 700;
+      border-left: 5px solid #ccc;
+      padding-left: 12px;
+      margin-bottom: 18px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .section-emoji { font-size: 1.2rem; }
+
+    .article-card {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .article-card:last-of-type { border-bottom: none; }
+
+    .article-title {
+      display: block;
+      font-size: .97rem; font-weight: 600;
+      color: var(--link); text-decoration: none;
+      margin-bottom: 3px; line-height: 1.4;
+    }
+    .article-title:hover { text-decoration: underline; }
+
+    .article-source {
+      display: inline-block;
+      font-size: .72rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .06em;
+      color: var(--muted); margin-bottom: 5px;
+    }
+    .article-summary {
+      font-size: .88rem; color: var(--muted); line-height: 1.55;
+    }
+
+    .back-top {
+      display: inline-block; margin-top: 14px;
+      font-size: .78rem; color: var(--muted); text-decoration: none;
+    }
+    .back-top:hover { color: var(--text); }
+
+    .empty { font-style: italic; color: var(--muted); font-size: .9rem; }
+
+    footer {
+      text-align: center; padding: 22px;
+      font-size: .78rem; color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── Mobile ── */
+    @media (max-width: 680px) {
+      nav { display: none; }
+      main { padding: 16px; }
+      .topic-section { padding: 18px 16px 12px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>📰 Daily News Digest</h1>
+    <span class="meta">Tuesday, May 12, 2026 · 0 stories across 8 topics</span>
+  </header>
+
+  <div class="layout">
+    <nav>
+      <div class="nav-label">Jump to</div>
+      <a href="#vermont" class="nav-link" style="--accent:#2F855A">🍁&nbsp; Vermont News</a>
+<a href="#world" class="nav-link" style="--accent:#2B6CB0">🌍&nbsp; Top World Events</a>
+<a href="#us" class="nav-link" style="--accent:#C53030">🦅&nbsp; Top US Events</a>
+<a href="#retirement" class="nav-link" style="--accent:#B7791F">💰&nbsp; Personal Finance & Retirement</a>
+<a href="#ai" class="nav-link" style="--accent:#6B46C1">🤖&nbsp; AI Technology & Usage</a>
+<a href="#science" class="nav-link" style="--accent:#00718C">🔬&nbsp; Advances in Science</a>
+<a href="#healthcare" class="nav-link" style="--accent:#D53F8C">🏥&nbsp; Advances in Health Care</a>
+<a href="#music" class="nav-link" style="--accent:#E53E3E">🎵&nbsp; New Music</a>
+
+    </nav>
+    <main>
+      
+      <section id="vermont" class="topic-section">
+        <h2 class="section-heading" style="border-color:#2F855A">
+          <span class="section-emoji">🍁</span>
+          Vermont News
+        </h2>
+        <p class="empty">No articles found for this topic today.</p>
+        <a class="back-top" href="#page-top">↑ top</a>
+      </section>
+      <section id="world" class="topic-section">
+        <h2 class="section-heading" style="border-color:#2B6CB0">
+          <span class="section-emoji">🌍</span>
+          Top World Events
+        </h2>
+        <p class="empty">No articles found for this topic today.</p>
+        <a class="back-top" href="#page-top">↑ top</a>
+      </section>
+      <section id="us" class="topic-section">
+        <h2 class="section-heading" style="border-color:#C53030">
+          <span class="section-emoji">🦅</span>
+          Top US Events
+        </h2>
+        <p class="empty">No articles found for this topic today.</p>
+        <a class="back-top" href="#page-top">↑ top</a>
+      </section>
+      <section id="retirement" class="topic-section">
+        <h2 class="section-heading" style="border-color:#B7791F">
+          <span class="section-emoji">💰</span>
+          Personal Finance & Retirement
+        </h2>
+        <p class="empty">No articles found for this topic today.</p>
+        <a class="back-top" href="#page-top">↑ top</a>
+      </section>
+      <section id="ai" class="topic-section">
+        <h2 class="section-heading" style="border-color:#6B46C1">
+          <span class="section-emoji">🤖</span>
+          AI Technology & Usage
+        </h2>
+        <p class="empty">No articles found for this topic today.</p>
+        <a class="back-top" href="#page-top">↑ top</a>
+      </section>
+      <section id="science" class="topic-section">
+        <h2 class="section-heading" style="border-color:#00718C">
+          <span class="section-emoji">🔬</span>
+          Advances in Science
+        </h2>
+        <p class="empty">No articles found for this topic today.</p>
+        <a class="back-top" href="#page-top">↑ top</a>
+      </section>
+      <section id="healthcare" class="topic-section">
+        <h2 class="section-heading" style="border-color:#D53F8C">
+          <span class="section-emoji">🏥</span>
+          Advances in Health Care
+        </h2>
+        <p class="empty">No articles found for this topic today.</p>
+        <a class="back-top" href="#page-top">↑ top</a>
+      </section>
+      <section id="music" class="topic-section">
+        <h2 class="section-heading" style="border-color:#E53E3E">
+          <span class="section-emoji">🎵</span>
+          New Music
+        </h2>
+        <p class="empty">No articles found for this topic today.</p>
+        <a class="back-top" href="#page-top">↑ top</a>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    Built with Claude AI + web search &nbsp;·&nbsp; Refreshed daily at ~6 am ET &nbsp;·&nbsp; Tuesday, May 12, 2026
+  </footer>
+</body>
+</html>
