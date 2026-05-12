@@ -1,0 +1,41 @@
+name: Daily News Digest
+
+on:
+  schedule:
+    # 11:00 UTC = 6:00 am EST (winter) / 7:00 am EDT (summer)
+    # Change to "0 10 * * *" if you prefer 6am during daylight saving time
+    - cron: '0 11 * * *'
+  workflow_dispatch:   # lets you trigger a manual run from the GitHub UI anytime
+
+permissions:
+  contents: write      # needed to commit the updated index.html back to the repo
+
+jobs:
+  fetch-and-publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install anthropic
+
+      - name: Fetch news and build HTML page
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python fetch_news.py
+
+      - name: Commit and push updated page
+        run: |
+          git config user.name  "News Bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add index.html
+          # Only commit if index.html actually changed
+          git diff --staged --quiet || git commit -m "Daily digest: $(date +'%Y-%m-%d')"
+          git push
