@@ -156,7 +156,7 @@ Return between 4 and 6 items. Do not duplicate stories."""
     for attempt in range(15):
         try:
             response = client.messages.create(
-                model="claude-sonnet-4-20250514",
+                model="claude-sonnet-4-6",
                 max_tokens=2500,
                 tools=tools,
                 messages=messages,
