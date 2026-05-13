@@ -1,155 +1,85 @@
 <!DOCTYPE html>
 <html lang="en" id="page-top">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Daily News Digest · 2026-05-12</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily News Digest</title>
   <style>
-    /* ── Reset & tokens ── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --bg:        #f0f2f5;
-      --surface:   #ffffff;
-      --border:    #e2e8f0;
-      --text:      #1a202c;
-      --muted:     #718096;
-      --link:      #2b6cb0;
-      --header-bg: #1a202c;
-      --nav-bg:    #2d3748;
-      --nav-text:  #e2e8f0;
-      --nav-hover: #4a5568;
-      --shadow:    0 1px 6px rgba(0,0,0,.08);
+      --bg: #f0f2f5; --surface: #ffffff; --border: #e2e8f0;
+      --text: #1a202c; --muted: #718096; --link: #2b6cb0;
+      --header-bg: #1a202c; --nav-bg: #2d3748; --nav-text: #e2e8f0;
+      --nav-hover: #4a5568; --shadow: 0 1px 6px rgba(0,0,0,.08);
     }
     @media (prefers-color-scheme: dark) {
       :root {
-        --bg:      #111827;
-        --surface: #1f2937;
-        --border:  #374151;
-        --text:    #f3f4f6;
-        --muted:   #9ca3af;
-        --link:    #60a5fa;
-        --nav-bg:  #111827;
-        --nav-hover: #1f2937;
+        --bg: #111827; --surface: #1f2937; --border: #374151;
+        --text: #f3f4f6; --muted: #9ca3af; --link: #60a5fa;
+        --nav-bg: #111827; --nav-hover: #1f2937;
       }
     }
-
-    /* ── Layout ── */
     body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-             background: var(--bg); color: var(--text); line-height: 1.65; }
-
+           background: var(--bg); color: var(--text); line-height: 1.65; }
     header {
-      position: sticky; top: 0; z-index: 200;
-      background: var(--header-bg); color: #fff;
-      padding: 14px 28px;
-      display: flex; align-items: center; justify-content: space-between;
+      position: sticky; top: 0; z-index: 200; background: var(--header-bg); color: #fff;
+      padding: 14px 28px; display: flex; align-items: center; justify-content: space-between;
       box-shadow: 0 2px 10px rgba(0,0,0,.35);
     }
-    header h1 { font-size: 1.2rem; font-weight: 700; letter-spacing: -.01em; }
+    header h1 { font-size: 1.2rem; font-weight: 700; }
     header .meta { font-size: .8rem; opacity: .65; }
-
     .layout { display: flex; min-height: calc(100vh - 58px); }
-
-    /* ── Sidebar ── */
     nav {
-      width: 230px; min-width: 230px;
-      background: var(--nav-bg);
-      position: sticky; top: 58px;
-      height: calc(100vh - 58px);
-      overflow-y: auto;
-      padding: 18px 0;
+      width: 230px; min-width: 230px; background: var(--nav-bg);
+      position: sticky; top: 58px; height: calc(100vh - 58px);
+      overflow-y: auto; padding: 18px 0;
     }
     nav .nav-label {
       font-size: .68rem; font-weight: 700; text-transform: uppercase;
-      letter-spacing: .1em; color: #718096;
-      padding: 0 18px 10px;
+      letter-spacing: .1em; color: #718096; padding: 0 18px 10px;
     }
     .nav-link {
-      display: block; color: var(--nav-text);
-      text-decoration: none; font-size: .87rem;
-      padding: 9px 18px;
-      border-left: 3px solid transparent;
+      display: block; color: var(--nav-text); text-decoration: none;
+      font-size: .87rem; padding: 9px 18px; border-left: 3px solid transparent;
       transition: background .15s, border-color .15s;
     }
-    .nav-link:hover {
-      background: var(--nav-hover);
-      border-left-color: var(--accent);
-    }
-
-    /* ── Main content ── */
+    .nav-link:hover { background: var(--nav-hover); border-left-color: var(--accent); }
     main { flex: 1; padding: 28px 32px; max-width: 900px; }
-
     .topic-section {
-      background: var(--surface);
-      border-radius: 12px;
-      padding: 24px 28px 16px;
-      margin-bottom: 26px;
-      box-shadow: var(--shadow);
+      background: var(--surface); border-radius: 12px;
+      padding: 24px 28px 16px; margin-bottom: 26px; box-shadow: var(--shadow);
     }
     .section-heading {
-      font-size: 1.15rem; font-weight: 700;
-      border-left: 5px solid #ccc;
-      padding-left: 12px;
-      margin-bottom: 18px;
-      display: flex; align-items: center; gap: 8px;
+      font-size: 1.15rem; font-weight: 700; border-left: 5px solid #ccc;
+      padding-left: 12px; margin-bottom: 18px; display: flex; align-items: center; gap: 8px;
     }
     .section-emoji { font-size: 1.2rem; }
-
-    .article-card {
-      padding: 14px 0;
-      border-bottom: 1px solid var(--border);
-    }
+    .article-card { padding: 14px 0; border-bottom: 1px solid var(--border); }
     .article-card:last-of-type { border-bottom: none; }
-
     .article-title {
-      display: block;
-      font-size: .97rem; font-weight: 600;
-      color: var(--link); text-decoration: none;
-      margin-bottom: 3px; line-height: 1.4;
+      display: block; font-size: .97rem; font-weight: 600; color: var(--link);
+      text-decoration: none; margin-bottom: 3px; line-height: 1.4;
     }
     .article-title:hover { text-decoration: underline; }
-
     .article-source {
-      display: inline-block;
-      font-size: .72rem; font-weight: 600;
-      text-transform: uppercase; letter-spacing: .06em;
-      color: var(--muted); margin-bottom: 5px;
+      display: block; font-size: .72rem; font-weight: 600;
+      text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin-bottom: 5px;
     }
-    .article-summary {
-      font-size: .88rem; color: var(--muted); line-height: 1.55;
-    }
-
-    .back-top {
-      display: inline-block; margin-top: 14px;
-      font-size: .78rem; color: var(--muted); text-decoration: none;
-    }
+    .article-summary { font-size: .88rem; color: var(--muted); line-height: 1.55; }
+    .back-top { display: inline-block; margin-top: 14px; font-size: .78rem; color: var(--muted); text-decoration: none; }
     .back-top:hover { color: var(--text); }
-
     .empty { font-style: italic; color: var(--muted); font-size: .9rem; }
-
-    footer {
-      text-align: center; padding: 22px;
-      font-size: .78rem; color: var(--muted);
-      border-top: 1px solid var(--border);
-    }
-
-    /* ── Mobile ── */
-    @media (max-width: 680px) {
-      nav { display: none; }
-      main { padding: 16px; }
-      .topic-section { padding: 18px 16px 12px; }
-    }
+    footer { text-align: center; padding: 22px; font-size: .78rem; color: var(--muted); border-top: 1px solid var(--border); }
+    @media (max-width: 680px) { nav { display: none; } main { padding: 16px; } }
   </style>
 </head>
 <body>
   <header>
-    <h1>📰 Daily News Digest</h1>
-    <span class="meta">Tuesday, May 12, 2026 · 30 stories across 8 topics</span>
+    <h1>Daily News Digest</h1>
+    <span class="meta">Wednesday, May 13, 2026 &middot; 45 stories across 8 topics</span>
   </header>
-
   <div class="layout">
-    <nav>
-      <div class="nav-label">Jump to</div>
-      <a href="#vermont" class="nav-link" style="--accent:#2F855A">🍁&nbsp; Vermont News</a>
+    <nav><div class="nav-label">Jump to</div><a href="#vermont" class="nav-link" style="--accent:#2F855A">🍁&nbsp; Vermont News</a>
 <a href="#world" class="nav-link" style="--accent:#2B6CB0">🌍&nbsp; Top World Events</a>
 <a href="#us" class="nav-link" style="--accent:#C53030">🦅&nbsp; Top US Events</a>
 <a href="#retirement" class="nav-link" style="--accent:#B7791F">💰&nbsp; Personal Finance & Retirement</a>
@@ -157,289 +87,62 @@
 <a href="#science" class="nav-link" style="--accent:#00718C">🔬&nbsp; Advances in Science</a>
 <a href="#healthcare" class="nav-link" style="--accent:#D53F8C">🏥&nbsp; Advances in Health Care</a>
 <a href="#music" class="nav-link" style="--accent:#E53E3E">🎵&nbsp; New Music</a>
-
-    </nav>
-    <main>
-      
-      <section id="vermont" class="topic-section">
-        <h2 class="section-heading" style="border-color:#2F855A">
-          <span class="section-emoji">🍁</span>
-          Vermont News
-        </h2>
-        <p class="empty">No articles found for this topic today.</p>
-        <a class="back-top" href="#page-top">↑ top</a>
-      </section>
-      <section id="world" class="topic-section">
-        <h2 class="section-heading" style="border-color:#2B6CB0">
-          <span class="section-emoji">🌍</span>
-          Top World Events
-        </h2>
-        
-          <div class="article-card">
-            <a class="article-title" href="https://www.npr.org/sections/world/" target="_blank" rel="noopener noreferrer">
-              Trump leaves for Beijing today for a state visit with Chinese President Xi Jinping
-            </a>
-            <span class="article-source">NPR</span>
-            <p class="article-summary">President Trump is beginning a high-stakes summit with Chinese President Xi in Beijing aimed at stabilizing U.S.-China relations amid tensions over Taiwan, trade, and the ongoing Iran war.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://aa.com.tr/en/world/morning-briefing-may-12-2026/3934418" target="_blank" rel="noopener noreferrer">
-              South Korea to join multinational defense talks on security in Strait of Hormuz
-            </a>
-            <span class="article-source">Anadolu Agency</span>
-            <p class="article-summary">More than 40 countries are participating in a first-of-its-kind high-level defense ministerial meeting co-chaired by Britain and France to address security threats in the Strait of Hormuz following recent attacks on shipping.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://aa.com.tr/en/world/morning-briefing-may-12-2026/3934418" target="_blank" rel="noopener noreferrer">
-              Trump says Iran ceasefire on 'massive life support,' blasts Tehran's response as 'piece of garbage'
-            </a>
-            <span class="article-source">Anadolu Agency</span>
-            <p class="article-summary">President Trump sharply criticized Iran's latest ceasefire proposal, escalating tensions and signaling potential military action as the fragile U.S.-Iran truce teeters on collapse.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://www.npr.org/sections/world/" target="_blank" rel="noopener noreferrer">
-              Israel sent Iron Dome anti-missile batteries and personnel to UAE during Iran war
-            </a>
-            <span class="article-source">NPR</span>
-            <p class="article-summary">Israel has deployed its Iron Dome air defense system to the United Arab Emirates, demonstrating deepening military cooperation and highlighting the UAE's active role in the Middle East conflict.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://www.justsecurity.org/138749/early-edition-may-12-2026/" target="_blank" rel="noopener noreferrer">
-              Philippine Senator Ronald dela Rosa locked in Senate offices after ICC arrest warrant unsealed
-            </a>
-            <span class="article-source">Just Security</span>
-            <p class="article-summary">The International Criminal Court has unsealed an arrest warrant for Philippine Senator dela Rosa on suspicion of crimes against humanity related to former President Duterte's anti-drug campaign, triggering a standoff.</p>
-          </div>
-        <a class="back-top" href="#page-top">↑ top</a>
-      </section>
-      <section id="us" class="topic-section">
-        <h2 class="section-heading" style="border-color:#C53030">
-          <span class="section-emoji">🦅</span>
-          Top US Events
-        </h2>
-        
-          <div class="article-card">
-            <a class="article-title" href="https://www.msn.com/en-in/money/markets/us-stock-market-today-may-12-2026-oil-price-surge-inflation-fears-drag-wall-street-s-p-500-down-0-6-nasdaq-0-9-lower/ar-AA2312NI" target="_blank" rel="noopener noreferrer">
-              US stock market today (May 12, 2026): Oil price surge, inflation fears drag Wall Street, S&amp;P 500 down 0.6%, Nasdaq 0.9% lower
-            </a>
-            <span class="article-source">MSN Money</span>
-            <p class="article-summary">U.S. stock markets retreated as rising oil prices, sticky inflation, and technology sector losses cooled Wall Street's recent rally, with the S&amp;P 500 falling 0.6% and Nasdaq declining 0.9% amid concerns over the Iran conflict.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://www.cnn.com/2026/05/12/politics/cost-of-living-us-financial-problem-vis" target="_blank" rel="noopener noreferrer">
-              A new CNN poll sum up Americans' feelings about the economy: They just feel stuck
-            </a>
-            <span class="article-source">CNN Politics</span>
-            <p class="article-summary">A new CNN poll finds Americans overwhelmingly view high prices and cost of living as their top economic concern, with nearly 7 in 10 believing a recession is likely within the next year.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://www.cbsnews.com/live-updates/iran-war-trump-oil-prices-peace-proposal-unacceptable/" target="_blank" rel="noopener noreferrer">
-              Iran vows to fight on as Trump says ceasefire is "on life support"
-            </a>
-            <span class="article-source">CBS News</span>
-            <p class="article-summary">Trump rejected Iran's latest peace proposal as a 'piece of garbage' and warned the ceasefire is on 'massive life support,' while U.S. officials indicate he is considering renewed military action to force nuclear concessions from Tehran.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://www.washingtonpost.com/politics/2026/05/11/virginia-democrats-redistricting-congress-supreme-court/f5f87556-4d73-11f1-97e7-22c6c29ff0d8_story.html" target="_blank" rel="noopener noreferrer">
-              Democrats ask the Supreme Court to halt a Virginia ruling blocking new congressional districts
-            </a>
-            <span class="article-source">The Washington Post</span>
-            <p class="article-summary">Democratic leaders filed an emergency Supreme Court appeal challenging Virginia's state court decision that invalidated voters' April referendum approving a new Democratic-leaning congressional map.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://www.dailypress.senate.gov/tuesday-may-12-2026/" target="_blank" rel="noopener noreferrer">
-              Senate plenary session confirmation votes on Kevin Warsh for Federal Reserve Board
-            </a>
-            <span class="article-source">U.S. Senate Daily Press</span>
-            <p class="article-summary">The Senate is voting today on Kevin Warsh's confirmation as a Member of the Board of Governors of the Federal Reserve System, with a cloture vote also scheduled on his nomination for Federal Reserve Chairman.</p>
-          </div>
-        <a class="back-top" href="#page-top">↑ top</a>
-      </section>
-      <section id="retirement" class="topic-section">
-        <h2 class="section-heading" style="border-color:#B7791F">
-          <span class="section-emoji">💰</span>
-          Personal Finance & Retirement
-        </h2>
-        <p class="empty">No articles found for this topic today.</p>
-        <a class="back-top" href="#page-top">↑ top</a>
-      </section>
-      <section id="ai" class="topic-section">
-        <h2 class="section-heading" style="border-color:#6B46C1">
-          <span class="section-emoji">🤖</span>
-          AI Technology & Usage
-        </h2>
-        
-          <div class="article-card">
-            <a class="article-title" href="https://www.cnbc.com/2026/05/11/heres-how-artificial-intelligence-is-changing-boardrooms.html" target="_blank" rel="noopener noreferrer">
-              Here's how artificial intelligence is changing boardrooms
-            </a>
-            <span class="article-source">CNBC</span>
-            <p class="article-summary">IBM reports that 76% of companies are appointing Chief AI Officers to oversee AI transformations, up from 26% in 2025, signaling a major organizational shift reshaping executive leadership.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://www.washingtonpost.com/politics/2026/05/11/trump-ai-regulation-commerce-intelligence/" target="_blank" rel="noopener noreferrer">
-              In Trump administration battle over AI, U.S. spy agencies seek more power
-            </a>
-            <span class="article-source">The Washington Post</span>
-            <p class="article-summary">U.S. national security officials are pushing for increased influence over AI regulation as the White House grapples with cybersecurity threats from advanced AI models.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://www.tlt.com/insights-and-events/insight/ai-brief-may-2026" target="_blank" rel="noopener noreferrer">
-              Lloyds Banking Group becomes first UK FTSE company to deploy AI in boardroom
-            </a>
-            <span class="article-source">TLT LLP</span>
-            <p class="article-summary">Lloyds Banking Group has deployed a specialized AI 'board bot' for reviewing confidential materials and checking for bias in decision-making, marking a significant milestone in AI adoption at the executive level.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://finance.yahoo.com/sectors/technology/articles/layoffs-accelerate-may-2026-firms-restructure-around-ai-040430218.html" target="_blank" rel="noopener noreferrer">
-              Layoffs Accelerate in May 2026 as Firms Restructure Around AI
-            </a>
-            <span class="article-source">Yahoo Finance</span>
-            <p class="article-summary">Multiple tech firms including PayPal, Coinbase, Cloudflare and Upwork are cutting thousands of jobs in May 2026 as companies rebuild their workforces around AI automation capabilities.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://www.consilium.europa.eu/en/press/press-releases/2026/05/07/artificial-intelligence-council-and-parliament-agree-to-simplify-and-streamline-rules/" target="_blank" rel="noopener noreferrer">
-              Artificial Intelligence: Council and Parliament agree to simplify and streamline rules
-            </a>
-            <span class="article-source">Consilium</span>
-            <p class="article-summary">The EU Council and European Parliament have reached a provisional agreement to streamline AI Act rules, postponing regulatory sandbox deadlines and reducing transparency implementation timelines to support business competitiveness.</p>
-          </div>
-        <a class="back-top" href="#page-top">↑ top</a>
-      </section>
-      <section id="science" class="topic-section">
-        <h2 class="section-heading" style="border-color:#00718C">
-          <span class="section-emoji">🔬</span>
-          Advances in Science
-        </h2>
-        
-          <div class="article-card">
-            <a class="article-title" href="https://www.sciencedaily.com/news/space_time/" target="_blank" rel="noopener noreferrer">
-              Hubble Reveals Giant Planet-Forming Disk Unlike Anything Astronomers Have Seen Before
-            </a>
-            <span class="article-source">ScienceDaily</span>
-            <p class="article-summary">Hubble Space Telescope discovered an exceptionally large planet-forming disk, nicknamed 'Dracula's Chivito,' representing an unprecedented astronomical observation of protoplanetary disk formation.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://www.sciencedaily.com/news/top/science/" target="_blank" rel="noopener noreferrer">
-              Oxford Physicists Achieve First-Ever Quadsqueezing Breakthrough in Quantum Physics
-            </a>
-            <span class="article-source">ScienceDaily</span>
-            <p class="article-summary">Scientists at Oxford University demonstrated quadsqueezing, the first-ever experimental realization of a fourth-order quantum effect that provides a new method for controlling quantum systems.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://www.sciencedaily.com/releases/2026/05/260508022653.htm" target="_blank" rel="noopener noreferrer">
-              Scientists Make Stunning Discovery That Could Change Our Understanding of the Universe
-            </a>
-            <span class="article-source">ScienceDaily</span>
-            <p class="article-summary">Researchers at Queen Mary University of London proposed that fundamental physical constants governing the universe may be linked to the conditions necessary for life itself, potentially reshaping how scientists understand physics and biology.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://www.sciencedaily.com/news/top/science/" target="_blank" rel="noopener noreferrer">
-              MIT Scientists Finally Reveal the Hidden Structure of a Mysterious High-Tech Material
-            </a>
-            <span class="article-source">ScienceDaily</span>
-            <p class="article-summary">After decades of mystery, MIT researchers mapped the atomic structure of relaxor ferroelectrics, materials that have powered medical ultrasounds and sonar systems but whose inner workings remained unknown until now.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://en.wikipedia.org/wiki/2026_in_science" target="_blank" rel="noopener noreferrer">
-              118 New Exoplanets Confirmed Using Machine Learning Applied to TESS Data
-            </a>
-            <span class="article-source">Wikipedia - 2026 in Science</span>
-            <p class="article-summary">Astronomers from the University of Warwick reported 118 newly confirmed exoplanets and 2,000 high-quality candidates using machine learning algorithms applied to NASA's TESS satellite data, advancing exoplanet discovery methods.</p>
-          </div>
-        <a class="back-top" href="#page-top">↑ top</a>
-      </section>
-      <section id="healthcare" class="topic-section">
-        <h2 class="section-heading" style="border-color:#D53F8C">
-          <span class="section-emoji">🏥</span>
-          Advances in Health Care
-        </h2>
-        
-          <div class="article-card">
-            <a class="article-title" href="https://www.fda.gov/news-events/press-announcements/fda-permits-expanded-access-investigational-pancreatic-cancer-drug" target="_blank" rel="noopener noreferrer">
-              FDA Permits Expanded Access for Investigational Pancreatic Cancer Drug
-            </a>
-            <span class="article-source">FDA</span>
-            <p class="article-summary">The FDA granted rapid approval for expanded access to daraxonrasib for previously treated metastatic pancreatic cancer patients within 48 hours, enabling immediate patient access outside clinical trials based on impressive phase 3 data showing 13.2-month survival versus 6.7 months with chemotherapy.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://www.globenewswire.com/news-release/2026/05/10/3291471/0/en/whiteswell-announces-primary-clinical-trial-results-simultaneously-at-heart-failure-2026-congress-and-in-european-journal-of-heart-failure-related-to-the-delta-hf-study-in-acute-de.html" target="_blank" rel="noopener noreferrer">
-              WhiteSwell Announces Primary Clinical Trial Results for eLym System in Acute Decompensated Heart Failure
-            </a>
-            <span class="article-source">Globe Newswire</span>
-            <p class="article-summary">The DELTA-HF trial showed a novel catheter-based device that supports lymphatic drainage achieved 82.5% freedom from heart failure hospitalization and death at six months in difficult-to-treat patients, with mean weight loss of 6.8kg and successful deployment in 100% of cases.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://www.sciencedaily.com/releases/2026/05/260505234618.htm" target="_blank" rel="noopener noreferrer">
-              Colon cancer breakthrough keeps patients cancer-free for nearly 3 years
-            </a>
-            <span class="article-source">ScienceDaily</span>
-            <p class="article-summary">The NEOPRISM-CRC trial demonstrated that just nine weeks of pembrolizumab before surgery achieved zero relapses after nearly three years in patients with specific MMR-deficient colorectal cancer, challenging the standard approach of surgery followed by months of chemotherapy.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://www.drugs.com/newdrugs.html" target="_blank" rel="noopener noreferrer">
-              FDA Approves Veppanu (vepdegestrant) for the Treatment of ESR1m, ER+/HER2- Advanced Breast Cancer
-            </a>
-            <span class="article-source">Drugs.com</span>
-            <p class="article-summary">The FDA approved Veppanu on May 1, 2026, a novel heterobifunctional protein degrader for estrogen receptor-positive breast cancer with ESR1 mutations, offering a new targeted treatment option for a previously difficult-to-treat breast cancer subtype.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://www.drugs.com/newdrugs.html" target="_blank" rel="noopener noreferrer">
-              FDA Grants Accelerated Approval for Otarmeni (lunsotogene parvec-cwha) Gene Therapy for Genetic Hearing Loss
-            </a>
-            <span class="article-source">Drugs.com</span>
-            <p class="article-summary">The FDA granted accelerated approval on April 23, 2026, to Otarmeni, the first gene therapy for genetic OTOF-related hearing loss, representing a breakthrough for patients with inherited deafness who previously had no targeted treatment options.</p>
-          </div>
-        <a class="back-top" href="#page-top">↑ top</a>
-      </section>
-      <section id="music" class="topic-section">
-        <h2 class="section-heading" style="border-color:#E53E3E">
-          <span class="section-emoji">🎵</span>
-          New Music
-        </h2>
-        
-          <div class="article-card">
-            <a class="article-title" href="https://www.sweetyhigh.com/read/new-music-friday-best-songs-may-8-2026-050826" target="_blank" rel="noopener noreferrer">
-              Khalid and Lauv Release Surprise Collaboration 'Tied Up'
-            </a>
-            <span class="article-source">Sweety High</span>
-            <p class="article-summary">Two R&amp;B/pop artists deliver an instantly iconic collaboration exploring the push and pull of romantic devotion, available this week.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://www.officialcharts.com/chart-news/new-music-friday-songs-singles-albums-may-1st-2026-playlist/" target="_blank" rel="noopener noreferrer">
-              Madonna and Sabrina Carpenter Join Forces on 'Bring Your Love'
-            </a>
-            <span class="article-source">Official Charts</span>
-            <p class="article-summary">The Queen of Pop and pop sensation Sabrina Carpenter collaborate on a track from Madonna's 15th studio album Confessions II, arriving July 3.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://ultimateclassicrock.com/may-2026-new-music-releases/" target="_blank" rel="noopener noreferrer">
-              The Black Keys Return with 'Peaches!' – First Self-Mixed Album Since 2006
-            </a>
-            <span class="article-source">Ultimate Classic Rock</span>
-            <p class="article-summary">The veteran rock duo releases their 14th full-length album, marking the first LP they've mixed entirely themselves since Magic Potion.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://podcast.popcultureweekly.com/blog/every-new-album-and-single-coming-in-may-2026-new-music-may/" target="_blank" rel="noopener noreferrer">
-              Broken Social Scene Return with 'Remember the Humans' After Nearly a Decade
-            </a>
-            <span class="article-source">Pop Culture Weekly</span>
-            <p class="article-summary">The Canadian indie collective's first album in nearly 10 years arrives this week, bringing fresh hope to devoted indie rock fans.</p>
-          </div>
-          <div class="article-card">
-            <a class="article-title" href="https://concertfix.com/tour-announcements" target="_blank" rel="noopener noreferrer">
-              Kacey Musgraves Announces 'Middle of Nowhere' Tour and New Album
-            </a>
-            <span class="article-source">ConcertFix</span>
-            <p class="article-summary">Country-pop star Kacey Musgraves releases her seventh studio album and announces an extensive North American tour with multiple arena dates.</p>
-          </div>
-        <a class="back-top" href="#page-top">↑ top</a>
-      </section>
-    </main>
+</nav>
+    <main><section id="vermont" class="topic-section"><h2 class="section-heading" style="border-color:#2F855A"><span class="section-emoji">🍁</span>Vermont News</h2><div class="article-card"><a class="article-title" href="https://www.vermontpublic.org/local-news" target="_blank" rel="noopener noreferrer">Overdose Deaths in Vermont Plummet by 25% in 2025</a><span class="article-source">Vermont Public</span><p class="article-summary">Vermont achieved a significant 25% reduction in overdose deaths in 2025 compared to 2024, marking major progress in the state's public health crisis response.</p></div>
+<div class="article-card"><a class="article-title" href="https://vtdigger.org/" target="_blank" rel="noopener noreferrer">Vermont's Agricultural Industry Hit by Rising Fuel Costs Due to Iran War</a><span class="article-source">VTDigger</span><p class="article-summary">Vermont farmers face economic pressures as rising fuel costs from the Iran conflict and Strait of Hormuz blockade impact agricultural operations statewide.</p></div>
+<div class="article-card"><a class="article-title" href="https://vtdigger.org/" target="_blank" rel="noopener noreferrer">Washington County Mental Health Services Plans to Consolidate Services</a><span class="article-source">VTDigger</span><p class="article-summary">Washington County Mental Health Services will consolidate operations to provide crisis care, intensive treatment, and outpatient therapy more efficiently.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.stowe_reporter.com/" target="_blank" rel="noopener noreferrer">Montpelier Hosting Free Neurodiversity Workshop Today at Kellogg-Hubbard Library</a><span class="article-source">Stowe Reporter</span><p class="article-summary">Montpelier Alive is hosting a free one-hour introductory workshop on neurodiversity this morning from 9-10 a.m. at the Kellogg-Hubbard Library for community members.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.wcax.com/news/" target="_blank" rel="noopener noreferrer">Vermont Attorney General Charity Clark to Lead National Association of Attorneys General's AI Committee</a><span class="article-source">WCAX</span><p class="article-summary">Vermont's Attorney General has been selected to help lead the National Association of Attorneys General's Artificial Intelligence Committee, raising the state's profile on AI policy.</p></div>
+<a class="back-top" href="#page-top">top</a></section>
+<section id="world" class="topic-section"><h2 class="section-heading" style="border-color:#2B6CB0"><span class="section-emoji">🌍</span>Top World Events</h2><div class="article-card"><a class="article-title" href="https://www.nbcnews.com/world/iran/iran-us-peace-talks-trump-rejects-totally-unacceptable-hormuz-rcna344501" target="_blank" rel="noopener noreferrer">Trump Rejects Iran's Peace Proposal as Ceasefire Remains on 'Life Support'</a><span class="article-source">NBC News</span><p class="article-summary">President Trump rejected Iran's counter-proposal to end the ongoing war, calling it "garbage," while oil prices surge to $104 per barrel and the fragile ceasefire faces collapse amid escalating tensions in the Middle East.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.nbcnews.com/politics" target="_blank" rel="noopener noreferrer">Trump Departs for Historic Beijing State Visit Amid Iran War Concerns</a><span class="article-source">NBC News</span><p class="article-summary">President Trump is heading to China for his first state visit to Beijing since 2017, planning to discuss the Iran war with President Xi Jinping while global oil markets remain volatile due to Middle East instability.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.npr.org/sections/world/" target="_blank" rel="noopener noreferrer">Israel Sends Iron Dome Defense Systems to UAE During Iran War</a><span class="article-source">NPR</span><p class="article-summary">Israel deployed Iron Dome anti-missile batteries and personnel to the United Arab Emirates to defend the country during the Iran conflict, marking a significant military cooperation in response to regional threats.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.semafor.com/" target="_blank" rel="noopener noreferrer">UK Prime Minister Starmer Faces Pressure After Catastrophic Local Election Results</a><span class="article-source">Semafor</span><p class="article-summary">Prime Minister Keir Starmer's Labour Party suffered its worst local election losses in decades, with the opposition Reform UK gaining significant ground, threatening his political stability and forcing policy recalibration with the EU.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.euronews.com/news/international" target="_blank" rel="noopener noreferrer">Israel Strikes Lebanon Despite Three-Week Ceasefire; Hezbollah Retaliates</a><span class="article-source">Euronews</span><p class="article-summary">Despite an active ceasefire agreement, Israel launched repeated strikes on Lebanon killing at least 39 people, prompting Hezbollah drone attacks on northern Israel and raising concerns about the fragility of regional agreements.</p></div>
+<a class="back-top" href="#page-top">top</a></section>
+<section id="us" class="topic-section"><h2 class="section-heading" style="border-color:#C53030"><span class="section-emoji">🦅</span>Top US Events</h2><div class="article-card"><a class="article-title" href="https://www.npr.org/2026/05/12/sections/health" target="_blank" rel="noopener noreferrer">FDA Chief Marty Makary Resigns After 13-Month Tenure</a><span class="article-source">NPR</span><p class="article-summary">FDA Commissioner Marty Makary is stepping down after a tumultuous 13-month period marked by staff layoffs, leadership turmoil and significant controversies at the agency.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.npr.org/2026/05/12/sections/news" target="_blank" rel="noopener noreferrer">Inflation Hits Highest Level in Nearly 3 Years as Iran War Drives Gas Prices Up</a><span class="article-source">NPR</span><p class="article-summary">Consumer prices rose 3.8% year-over-year in April, with gasoline prices jumping about $1.50 per gallon since the Iran war began, significantly impacting household budgets and overall inflation.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.senate.gov/daily_press" target="_blank" rel="noopener noreferrer">Senate Confirms Kevin Warsh as Fed Board Chairman</a><span class="article-source">U.S. Senate</span><p class="article-summary">The Senate voted 51-45 to invoke cloture on Kevin Warsh's nomination to be Chairman of the Board of Governors of the Federal Reserve System, moving forward his confirmation for a four-year term.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.scotusblog.com/2026/05/court-decides-major-voting-rights-act-case/" target="_blank" rel="noopener noreferrer">Supreme Court Strikes Down Louisiana's Majority-Black Congressional District</a><span class="article-source">SCOTUSblog</span><p class="article-summary">In a 6-3 decision, the Supreme Court invalidated Louisiana's Sixth District, weakening Voting Rights Act protections and potentially enabling Republican-controlled states to redraw maps that eliminate majority-minority districts nationwide.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.nbcnews.com/politics/2026-election/virginia-supreme-court-blocks-democratic-drawn-congressional-map-voter-rcna342687" target="_blank" rel="noopener noreferrer">Virginia Supreme Court Overturns Voter-Approved Redistricting Referendum</a><span class="article-source">NBC News</span><p class="article-summary">Virginia's state Supreme Court blocked a Democratic redistricting map approved by voters in April, finding procedural violations in the constitutional amendment process and boosting Republican midterm prospects.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.pbs.org/newshour" target="_blank" rel="noopener noreferrer">West Virginia and Nebraska Hold Midterm Primary Elections</a><span class="article-source">PBS News Hour</span><p class="article-summary">Voters in West Virginia and Nebraska participate in midterm primary elections to nominate candidates for U.S. Senate and House seats, with notable races shaping the battle for the narrowly divided Congress.</p></div>
+<a class="back-top" href="#page-top">top</a></section>
+<section id="retirement" class="topic-section"><h2 class="section-heading" style="border-color:#B7791F"><span class="section-emoji">💰</span>Personal Finance & Retirement</h2><div class="article-card"><a class="article-title" href="https://www.thestreet.com/retirement/key-social-security-updates-you-need-to-know-in-2026-retirement" target="_blank" rel="noopener noreferrer">Key Social Security updates you need to know for the rest of 2026 - TheStreet</a><span class="article-source">TheStreet</span><p class="article-summary">Social Security beneficiaries receive a 2.8% COLA increase starting January 2026, but rising Medicare Part B premiums significantly offset the gains for retirees on fixed incomes.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.elderlawanswers.com/how-medicare-changes-in-2026-will-affect-older-adults-21288" target="_blank" rel="noopener noreferrer">How Medicare Changes in 2026 Will Affect Older Adults</a><span class="article-source">ElderLaw Answers</span><p class="article-summary">Medicare 2026 brings prescription drug price negotiations, lower out-of-pocket caps for Part D at $2,100 annually, and new protections for Medicare Advantage enrollees navigating plan changes.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.kiplinger.com/retirement/social-security/changes-coming-to-social-security-in-2026" target="_blank" rel="noopener noreferrer">Six Changes to Social Security in 2026 | Kiplinger</a><span class="article-source">Kiplinger</span><p class="article-summary">Full retirement age reaches 67 for those born in 1960 or later in November 2026, and higher earnings limits for working beneficiaries provide more flexibility before benefits are reduced.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.irs.gov/newsroom/401k-limit-increases-to-24500-for-2026-ira-limit-increases-to-7500" target="_blank" rel="noopener noreferrer">401(k) limit increases to $24,500 for 2026, IRA limit increases to $7,500 | Internal Revenue Service</a><span class="article-source">Internal Revenue Service</span><p class="article-summary">Retirees age 50+ can contribute up to $32,500 to 401(k)s and $8,600 to IRAs in 2026; those ages 60-63 get enhanced catch-up provisions, helping near-retirees maximize tax-deferred savings.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.aarp.org/social-security/biggest-2026-changes/" target="_blank" rel="noopener noreferrer">How 2026 Social Security Changes Could Affect You</a><span class="article-source">AARP</span><p class="article-summary">A new $6,000 deduction for seniors age 65+ reduces taxable income on Social Security benefits in 2026, providing meaningful tax relief for qualified retirees and near-retirees.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.cms.gov/newsroom/fact-sheets/2026-medicare-parts-b-premiums-deductibles" target="_blank" rel="noopener noreferrer">2026 Medicare Parts A &amp; B Premiums and Deductibles | CMS</a><span class="article-source">Centers for Medicare &amp; Medicaid Services</span><p class="article-summary">Medicare Part B premiums increase 9.7% to $202.90 monthly in 2026 and annual deductibles rise to $283, directly impacting retiree budgets and offsetting Social Security COLA gains.</p></div>
+<a class="back-top" href="#page-top">top</a></section>
+<section id="ai" class="topic-section"><h2 class="section-heading" style="border-color:#6B46C1"><span class="section-emoji">🤖</span>AI Technology & Usage</h2><div class="article-card"><a class="article-title" href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank" rel="noopener noreferrer">Google Introduces Gemma 4, Advanced Open Models for Reasoning and Agentic Workflows</a><span class="article-source">Crescendo AI</span><p class="article-summary">Google's new Gemma 4 open models deliver unprecedented intelligence-per-parameter specifically designed for advanced reasoning and agentic AI applications, marking a significant shift toward efficiency-first development.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank" rel="noopener noreferrer">Novo Nordisk Partners with OpenAI to Transform Drug Discovery and Business Operations</a><span class="article-source">Crescendo AI</span><p class="article-summary">The Danish pharmaceutical giant is integrating AI across drug discovery, clinical trials, manufacturing, and supply chains with full deployment by end of 2026, aiming to accelerate obesity and diabetes treatments.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.whitehouse.gov/wp-content/uploads/2026/03/03.20.26-National-Policy-Framework-for-Artificial-Intelligence-Legislative-Recommendations.pdf" target="_blank" rel="noopener noreferrer">White House Releases National Policy Framework for Artificial Intelligence</a><span class="article-source">The White House</span><p class="article-summary">The Trump Administration released comprehensive legislative recommendations on March 20, 2026, to establish a unified federal approach to AI regulation with emphasis on child protection, innovation, and preemption of state AI laws.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.fiercehealthcare.com/ai-and-machine-learning/75-us-healthcare-systems-use-plan-use-ai-platform-2026" target="_blank" rel="noopener noreferrer">U.S. Health Systems AI Adoption Surges with 75% Now Using AI Applications</a><span class="article-source">Fierce Healthcare</span><p class="article-summary">AI platform adoption in U.S. hospitals jumped from 59% in 2025 to 75% in 2026, with health systems deploying AI for clinical documentation, medical imaging, and workflow optimization to reduce physician burnout.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank" rel="noopener noreferrer">Google's TurboQuant Algorithm Dramatically Improves AI Model Efficiency at Scale</a><span class="article-source">Crescendo AI</span><p class="article-summary">Google unveiled TurboQuant at ICLR 2026, an algorithm that significantly reduces memory overhead from KV cache bottlenecks, accelerating the shift toward efficiency-first AI with implications for on-device and data center deployment.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.crescendo.ai/news/latest-ai-news-and-updates" target="_blank" rel="noopener noreferrer">U.S. Air Force Successfully Deploys WarMatrix AI-Powered Wargaming System</a><span class="article-source">Crescendo AI</span><p class="article-summary">The Air Force's inaugural operational use of WarMatrix AI system during a March 2026 benchmark wargame demonstrated physics-based modeling and AI-assisted decision-making, running simulations up to 10,000 times faster than real time.</p></div>
+<a class="back-top" href="#page-top">top</a></section>
+<section id="science" class="topic-section"><h2 class="section-heading" style="border-color:#00718C"><span class="section-emoji">🔬</span>Advances in Science</h2><div class="article-card"><a class="article-title" href="https://www.sciencedaily.com/releases/2026/05/260508022653.htm" target="_blank" rel="noopener noreferrer">Scientists make stunning discovery that could change our understanding of the Universe</a><span class="article-source">ScienceDaily</span><p class="article-summary">Queen Mary University of London researchers propose that the Universe's fundamental constants may be constrained by the physical requirements for liquid flow in living cells.</p></div>
+<div class="article-card"><a class="article-title" href="https://en.wikipedia.org/wiki/2026_in_science" target="_blank" rel="noopener noreferrer">Researchers Uncover First Direct Observation of the Migdal Effect in Quantum Physics</a><span class="article-source">Wikipedia - 2026 in Science</span><p class="article-summary">University of Chinese Academy of Sciences researchers confirm the 1939 Migdal effect prediction through direct observation, enabling new approaches to dark matter detection.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.sciencedaily.com/news/health_medicine/" target="_blank" rel="noopener noreferrer">Oxford Physicists Achieve First-ever Quadsqueezing Breakthrough in Quantum Physics</a><span class="article-source">ScienceDaily</span><p class="article-summary">Scientists demonstrate quadsqueezing—the first-ever fourth-order quantum effect—creating a powerful new method for controlling quantum systems.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.sciencedaily.com/news/plants_animals/biology/" target="_blank" rel="noopener noreferrer">Scientists studying axolotls uncover shared genes that could enable human limb regeneration</a><span class="article-source">ScienceDaily</span><p class="article-summary">Researchers identify SP genes involved in limb regeneration in axolotls, zebrafish, and mice, potentially pointing toward future human regenerative medicine applications.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.sciencedaily.com/news/health_medicine/" target="_blank" rel="noopener noreferrer">Scientists Say This Algae Could Remove Microplastics from Drinking Water</a><span class="article-source">ScienceDaily</span><p class="article-summary">Researchers engineered algae that produce limonene to bind and remove microscopic plastic pollution from water, offering a novel environmental remediation solution.</p></div>
+<a class="back-top" href="#page-top">top</a></section>
+<section id="healthcare" class="topic-section"><h2 class="section-heading" style="border-color:#D53F8C"><span class="section-emoji">🏥</span>Advances in Health Care</h2><div class="article-card"><a class="article-title" href="https://ourhealtho.com/health-insight-may-12-2026/" target="_blank" rel="noopener noreferrer">NHS Rollout of One-Minute Cancer Immunotherapy Jab Begins</a><span class="article-source">Our Healtho</span><p class="article-summary">The NHS has begun rolling out a rapid subcutaneous pembrolizumab injection reducing treatment time from two hours to 60 seconds, significantly improving patient convenience and hospital efficiency for cancer care.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.hcplive.com/view/6-fda-headlines-you-missed-in-april-2026/" target="_blank" rel="noopener noreferrer">FDA Approves Foundayo (Orforglipron) as First GLP-1 Pill Without Food or Water Restrictions</a><span class="article-source">HCP Live</span><p class="article-summary">Eli Lilly's orforglipron received FDA approval as the first GLP-1 weight-loss medication that can be taken anytime without food or water restrictions, with pricing starting at $25/month for insured patients.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.globenewswire.com/news-release/2026/05/10/3291471/0/en/whiteswell-announces-primary-clinical-trial-results-simultaneously-at-heart-failure-2026-congress-and-in-european-journal-of-heart-failure-related-to-the-delta-hf-study-in-acute-de.html" target="_blank" rel="noopener noreferrer">WhiteSwell Reports Positive Results from DELTA-HF Heart Failure Trial</a><span class="article-source">Globe Newswire</span><p class="article-summary">The eLym System showed 82.5% freedom from heart failure hospitalization and death at 6 months, with patients achieving mean weight loss of 6.8kg, offering a novel minimally-invasive approach to acute decompensated heart failure.</p></div>
+<div class="article-card"><a class="article-title" href="https://investors.viridiantherapeutics.com/news/news-details/2026/Viridian-Therapeutics-Announces-Positive-Topline-Results-from-Elegrobart-Phase-3-REVEAL2-Clinical-Trial-in-Chronic-Thyroid-Eye-Disease/default.aspx" target="_blank" rel="noopener noreferrer">Viridian's Elegrobart Achieves Positive Phase 3 Results in Chronic Thyroid Eye Disease</a><span class="article-source">Viridian Therapeutics</span><p class="article-summary">Elegrobart achieved 50-54% proptosis responder rates versus 15% placebo in chronic thyroid eye disease, with potential for convenient at-home treatment in as few as three doses pending 2027 FDA submission.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.sciencedaily.com/news/health_medicine/" target="_blank" rel="noopener noreferrer">Colon Cancer Breakthrough: Immunotherapy Before Surgery Keeps Patients Cancer-Free for Nearly 3 Years</a><span class="article-source">Science Daily</span><p class="article-summary">A UK-led trial demonstrated that nine weeks of immunotherapy before surgery for specific colorectal cancer types produces unexpectedly powerful results with patients remaining cancer-free for nearly three years.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.gurufocus.com/news/8851063/astrazeneca-azn-reports-positive-calypso-phase-iii-trial-results" target="_blank" rel="noopener noreferrer">AstraZeneca Reports Positive CALYPSO Phase 3 Results for Eneboparatide in Calcium Metabolism</a><span class="article-source">GuruFocus</span><p class="article-summary">Eneboparatide successfully achieved its primary endpoint with 31.1% of patients achieving calcium normalization and independence from vitamin D and calcium supplements within 24 weeks, addressing a previously undertreated condition.</p></div>
+<a class="back-top" href="#page-top">top</a></section>
+<section id="music" class="topic-section"><h2 class="section-heading" style="border-color:#E53E3E"><span class="section-emoji">🎵</span>New Music</h2><div class="article-card"><a class="article-title" href="https://variety.com/2026/music/news/gracie-abrams-new-album-daughter-from-hell-summer-release-1236744826/" target="_blank" rel="noopener noreferrer">Gracie Abrams Announces New Album 'Daughter From Hell,' Releasing This Summer</a><span class="article-source">Variety</span><p class="article-summary">Singer-songwriter Gracie Abrams announced her third album 'Daughter From Hell' for July 17 release, with the first single 'Hit the Wall' arriving May 16, continuing her collaboration with Aaron Dessner.</p></div>
+<div class="article-card"><a class="article-title" href="https://www.brooklynvegan.com/2026/05/11/" target="_blank" rel="noopener noreferrer">Tricky Announces North American Tour in Support of His Upcoming Album Different When It's Silent</a><span class="article-source">Brooklyn Vegan</span><p class="article-summary">UK electronic artist Tricky announced his first North American tour in eight years with dates from September 16 in Detroit to October 15 in Atlanta, supporting his upcoming album 'Different When It's Silent.'</p></div>
+<div class="article-card"><a class="article-title" href="https://www.brooklynvegan.com/2026/05/11/" target="_blank" rel="noopener noreferrer">The Prodigy Added NYC Show to Fall Tour Plans</a><span class="article-source">Brooklyn Vegan</span><p class="article-summary">Electronic veterans The Prodigy announced a New York City show at Under the K Bridge on September 25, presented with the CBGB Festival and featuring special guests Brutalismus 3000, Sextile, and Lip.</p></div>
+<div class="article-card"><a class="article-title" href="https://ultimateclassicrock.com/may-2026-new-music-releases/" target="_blank" rel="noopener noreferrer">Paul McCartney Releases New Album 'The Boys of Dungeon Lane' in May 2026</a><span class="article-source">Ultimate Classic Rock</span><p class="article-summary">Paul McCartney's 27th studio album 'The Boys of Dungeon Lane' arrives in May, his first studio project since 2020's 'McCartney III,' produced by Andrew Watt.</p></div>
+<div class="article-card"><a class="article-title" href="https://ultimateclassicrock.com/may-2026-new-music-releases/" target="_blank" rel="noopener noreferrer">Peter Frampton Releases 'Carry the Light,' His First Album of Original Material in 15 Years</a><span class="article-source">Ultimate Classic Rock</span><p class="article-summary">Rock legend Peter Frampton released 'Carry the Light,' a guest-packed album featuring Graham Nash, Sheryl Crow, Tom Morello and Benmont Tench in his first full album of original material since 2011.</p></div>
+<div class="article-card"><a class="article-title" href="https://maurycountysource.com/new-music-this-week-may-11-2026/" target="_blank" rel="noopener noreferrer">Kenny Chesney Releases New Single 'Carry On' After Two-Year Hiatus</a><span class="article-source">Maury County Source</span><p class="article-summary">Country music star Kenny Chesney released his new single 'Carry On,' marking his return to new music after a two-year wait, with a more stripped-down acoustic arrangement.</p></div>
+<a class="back-top" href="#page-top">top</a></section>
+</main>
   </div>
-
-  <footer>
-    Built with Claude AI + web search &nbsp;·&nbsp; Refreshed daily at ~6 am ET &nbsp;·&nbsp; Tuesday, May 12, 2026
-  </footer>
+  <footer>Built with Claude AI + web search &middot; Refreshed daily at ~6 am ET &middot; Wednesday, May 13, 2026</footer>
 </body>
 </html>
